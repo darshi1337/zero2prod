@@ -5,8 +5,8 @@ async fn greet(req: HttpRequest) -> impl Responder {
     format!("Hello {}!", &name)
 }
 
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
+#[tokio::main]
+async fn main() -> Result<(), std::io::Error> {
     HttpServer::new(|| {
         App::new()
             .route("/", web::get().to(greet))
